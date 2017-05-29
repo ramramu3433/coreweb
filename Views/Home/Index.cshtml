@@ -4,12 +4,14 @@
 @section scripts{
     <script>
         $(function () {
-            $.getJSON('http://192.168.54.161:4001/sampleapp/getAnalysis', null, function (res) {
+            $('#btnsubmit').on('click',function(){
+             $.getJSON('http://192.168.54.161:4001/sampleapp/getAnalysis', null, function (res) {
                 $('.apilist').html();
                 $.each(res.lstresult, function (i, v) {
                     $('.apilist').append($('<li class="list-group-item"/>').text(v.appName));
                 });
             })
+            });           
         });
     </script>
 }
@@ -20,6 +22,7 @@
     <div class="col-md-3">
         <h2>Application uses</h2>
         <ul class="list-group apilist"></ul>
+        <button type='button' id='btnsubmit'>Show Data</button>
     </div>
 </div>
 
